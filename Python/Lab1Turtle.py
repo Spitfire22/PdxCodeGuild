@@ -89,5 +89,13 @@ forward(35)
 
 # Begin letter 'A'
 pu()
-
+goto(-190,300)
+pd()
+left(220)
+forward(55)
+pu()
+goto(-190,300)
+pd()
+left(120)
+forward(55)
 done()
