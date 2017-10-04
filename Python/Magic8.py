@@ -9,12 +9,16 @@ result += ['Concentrate and ask again', 'Don\'t count on it', 'My reply is no', 
 result += ['Outlook not so good', 'Very doubtful']
 
 
-results = random.choice(result)
-print(results)
 
+shake = ""
+while shake != "done" :
+    query = input('Do you want to shake again? ')
+    if query == 'Shake again':
+        question = input('What question do you want me to answer? ')
+        results = random.choice(result)
+        print(results)
+    elif query == 'Done':
+        quit()
 
-#shake = ""
-#while shake != "done" :
-
-#else :
-#    print("Thanks for playing!")
+else :
+    print("Thanks for playing!")
