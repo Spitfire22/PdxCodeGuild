@@ -1,4 +1,6 @@
-
+'''
+Lab 11 average numbers
+'''
 
 
 #nums = [5, 0, 8, 3, 4, 1, 6]
@@ -17,6 +19,7 @@ while True:
         break
     nums.append(int(num))
 
+print(nums)
+
 print(sum(nums)/len(nums))
 
-print(nums)
