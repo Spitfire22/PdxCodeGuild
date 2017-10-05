@@ -39,9 +39,9 @@ The sandy ground shakes and liquifies, a toothy worm appears.
 
 def is_even(a):
     if a % 2 == 0:
-        return True
+        print(True)
     else:
-        False
+        print(False)
 
 is_even(5)
 is_even(6)
