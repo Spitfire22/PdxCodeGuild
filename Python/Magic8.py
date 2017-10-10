@@ -12,12 +12,12 @@ result += ['Outlook not so good', 'Very doubtful']
 
 shake = ""
 while shake != "done" :
-    query = input('Do you want to shake again? ')
-    if query == 'Shake again':
+    query = input('I need to know if you want to \'shake\' or if you\'re \'done\': ')
+    if query == 'shake':
         question = input('What question do you want me to answer? ')
         results = random.choice(result)
         print(results)
-    elif query == 'Done':
+    elif query == 'done':
         quit()
 
 else :
