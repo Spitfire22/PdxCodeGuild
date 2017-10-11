@@ -1,6 +1,14 @@
 
 ##['ten','twenty','thirty']
 ## put the numbers into a list and reference them out of that list.
+## this will make the hundreds place easier to attain
+
+ones = ['one','two','three','four','five','six','seven','eight','nine']
+teens = ['ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen']
+tens = ['twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety']
+hundred = ['hundred and']
+
+# rehash this so the numeric input is translated to the indices in the list
 
 
 def max10(b):
