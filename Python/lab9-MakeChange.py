@@ -1,10 +1,13 @@
 cash = float(input('How much cash and change do you have? '))
 print('We are going to convert that to coins only.')
 quarter = (cash)//.25
+cash -= quarter*.25
 print('That will take this many quarters:', quarter)
 dimes = (cash)//.10
+cash -= dimes*.10
 print('Including this many dimes:', dimes)
 nickels = (cash)//.05
+cash -= nickels*.05
 print('This amount of nickels:', nickels)
 pennies = (cash)//.01 + 1
 print('And this number of pennies:', pennies)
