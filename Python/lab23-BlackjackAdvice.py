@@ -9,27 +9,32 @@ print('Blackjack Helper - Advice on hands of Blackjack\n')
 print(' '*8,'$'*25,'\n')
 
 # Sum the value of all cards, if 'A' present, 'A' = 1
-def cardvalue(c1, c2, c3):
-    pass
+def cardvalue(card):
+    if card == 'A':
+        return 1
+    elif card == 'J' or card == 'Q'or card == 'K':
+        return 10
+    return int(card)
 
-# If 'A' in list and =< 10, A = 11
-def aces():
-    pass
 
 # This is the total of the cards above.
 def total():
-    pass
+    card1 = input('What is your first card? ')
+    # cardvalue(card1)
+    card2 = input('What is your second card? ')
+    # cardvalue(card2)
+    card3 = input('What is your third card? ')
+    # cardvalue(card3)
+    value = cardvalue(card1) + cardvalue(card2) + cardvalue(card3)
+    if value < 17:
+        return print("You should hit!")
+    if value > 17 and value <= 20:
+        return print("In this situation you should stay.")
+    if value == 21:
+        return print("BooYeah! Blackjack!")
+    else:
+        return print("Bust, Busted, Game over man!")
 
-# total > 17 'Hit, total >= 17 and total < 21  'Advise to stay', total == 21 'Blackjack!', total < 21 'Busted'
-def advice():
-    pass
 
-card1 = input('What is your first card? ')
-#cardvalue(card1)
-card2 = input('What is your second card? ')
-#cardvalue(card2)
-card3 = input('What is your third card? ')
-#cardvalue(card3)
-selectcards = str([card1, card2, card3])
+total()
 
-cards = {'A': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 10, 'Q': 10, 'K': 10}
