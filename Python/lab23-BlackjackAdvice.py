@@ -26,9 +26,10 @@ def total():
     card3 = input('What is your third card? ')
     # cardvalue(card3)
     value = cardvalue(card1) + cardvalue(card2) + cardvalue(card3)
+##      This is if the total is less than 10 and there is an Ace in the 3 cards... but I cannot get work.
 #    if value <= 10:
-#        and card1 == 1 or card2 == 1 or card3 == 1:
-#        return value + 11
+#        if card1 == 1 or card2 == 1 or card3 == 1:
+#            return value + 10
     if value < 17:
         return print("You should hit!")
     if value > 17 and value <= 20:
@@ -40,4 +41,5 @@ def total():
 
 
 total()
+
 
