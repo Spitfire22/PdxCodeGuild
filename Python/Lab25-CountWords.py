@@ -45,11 +45,11 @@ for i in range(len(word_list)-1):
 
 words = list(word_count.items()) # list of tuples
 words.sort(key=lambda tup: tup[1], reverse=True)  # sort largest to smallest, based on count
-for i in range(min(40, len(words))):  # print the top 10 words, or all of them, whichever is smaller
+for i in range(min(60, len(words))):  # print the top 10 words, or all of them, whichever is smaller
     print(words[i])
 
 
-
+repub.close()
 
 #
 # def lower_case(text):
