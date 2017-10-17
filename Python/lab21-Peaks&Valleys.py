@@ -44,15 +44,3 @@ print(valleys(data))
 print(peaks_and_valleys(data))
 
 
-# Keeping this - I don't know if it will work or not.
-
-
-
-
-
-
-
-
-
-
-
