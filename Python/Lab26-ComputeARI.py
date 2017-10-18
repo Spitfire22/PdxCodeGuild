@@ -6,24 +6,32 @@ Computing automated readability index from a file.
 
 
 '''
-
-republic = open('TheRepublic.txt', 'r')
+text = 'TheRepublic.txt'
+republic = open(text, 'r')
 contents = republic.read()
 for char in '\n':
     contents = contents.replace(char, '')
+for char in '?!':
+    contents = contents.replace(char, '.')
 sentence_list = contents.split('.')
 word_list = contents.split(' ')
 
-## trying to create a condition where it splits all letters from words to create a count.
-# for char in 'abcdefghijklmnopqrstuvwxuyz':
-#     content = contents.join(' ')
-letter_list = contents.split(' ')
-print(letter_list)
+# trying to create a condition where it splits all letters from words to create a count.
+count = 0
+for char in 'abcdefghijklmnopqrstuvwxuyz':
+    count += contents.count(char)
 
-print(len(sentence_list))
-print(len(word_list))
-print(len(letter_list))
 
+
+print('Number of Sentences: ',len(sentence_list))
+sentences = int(len(sentence_list))
+words = int(len(word_list))
+print('Number of Words: ',len(word_list))
+print('Number of Characters: ',count)
+#print(len(letter_list)
+
+total = 4.71 * (count/words) + 0.5 * (words/sentences) - 21.43
+print_total = (int(total))
 
 ari_scale = {
     1: {'ages': '5-6', 'grade_level': 'Kindergarten'},
@@ -43,7 +51,14 @@ ari_scale = {
 }
 
 
-# 4.71 * (characters/words) + .5 (words/sentences) - 21.43
+grade_level = (ari_scale[print_total]['grade_level'])
+age_level = (ari_scale[print_total]['ages'])
+
+print('-'*60)
+print('The ARI for', text, 'is', print_total)
+print('This corresponds to a', grade_level, 'level of difficulty')
+print('that is suitable for an average person', age_level, 'years old.')
+print('-'*60)
 
 
 republic.close()
