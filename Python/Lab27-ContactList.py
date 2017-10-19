@@ -151,7 +151,7 @@ ask()
 
 #I need to remove the keys from the contacts list before splitting by ',' and new line
 
-
+#
 
 # use contacts
 new_contact = ""
