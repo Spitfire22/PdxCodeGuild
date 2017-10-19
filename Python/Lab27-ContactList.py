@@ -149,6 +149,16 @@ ask()
 ### and join the strings with a new line.
 ### Load back into the file.
 
+#I need to remove the keys from the contacts list before splitting by ',' and new line
+
+
+
+# use contacts
+new_contact = ""
+for i in contacts:
+    new_contact += str(i) + ',\n'
+print(contacts)
+print(new_contact)
 
 
 
