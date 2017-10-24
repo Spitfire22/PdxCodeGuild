@@ -124,7 +124,9 @@ def delete_user():
         print(prompt, 'was removed!')
 
 
-def ask():
+def main():
+    # load the file, using the load function
+    # you'd have to pass the contact list to each of the functions in the repl
     while True:
         command = input('\n|Contact List| Type a Command: Create, Retrieve, Update, Delete, or Exit ?\n\t').lower()
         if command in ['done', 'quit', 'exit']:
@@ -138,9 +140,10 @@ def ask():
         elif command == 'delete':
             delete_user()
         else:
-            ask()
+            print('command not recognized')
+    # save the file
 
-ask()
+main()
 
 
 ### Version 3 ---------------------------------------

@@ -9,8 +9,7 @@ Computing automated readability index from a file.
 text = 'TheRepublic.txt'
 republic = open(text, 'r')
 contents = republic.read()
-for char in '\n':
-    contents = contents.replace(char, '')
+contents = contents.replace('\n', '')
 for char in '?!':
     contents = contents.replace(char, '.')
 sentence_list = contents.split('.')

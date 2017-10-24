@@ -6,12 +6,12 @@ words within the book.
 
 '''
 
-# with open('TheRepublic.txt', 'r') as repub:
-#     contents = repub.read()
+with open('TheRepublic.txt', 'r') as repub:
+     contents = repub.read().lower()
 
 
-repub = open('TheRepublic.txt', 'r')
-contents = repub.read().lower()
+#repub = open('TheRepublic.txt', 'r')
+#contents = repub.read().lower()
 for char in "\n.?!:;,(){}[]'\"#+=*&^%$@/-_><0123456789":
     contents = contents.replace(char, ' ')
 word_list = contents.split(' ')
@@ -49,7 +49,7 @@ for i in range(min(60, len(words))):  # print the top 10 words, or all of them, 
     print(words[i])
 
 
-repub.close()
+#repub.close()
 
 #
 # def lower_case(text):
@@ -59,6 +59,3 @@ repub.close()
 #
 # lower_case(contents)
 
-
-
-#words =
