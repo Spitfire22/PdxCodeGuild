@@ -53,7 +53,6 @@ class Atm:
         return
 
 
-
 atm = Atm()
 
 # print('This is the balance of your account: $' + str(atm.balance))
@@ -69,10 +68,6 @@ atm = Atm()
 # print('Checking the ability to withdraw that ammount: ', can_i_withdraw)
 #
 # # print(cash.calc_interest)
-
-
-
-
 
 
 def main():
