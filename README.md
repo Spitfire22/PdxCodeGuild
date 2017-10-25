@@ -1,4 +1,6 @@
 # PdxCodeGuild
-Llama Llama Llama Course Work *** Bleet Bleet Bleeet
 
-This is for the class work.
+
+Oct 2017 to Dec 2018 Coursework.
+
+This is only for the class work.
