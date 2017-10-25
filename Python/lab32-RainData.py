@@ -18,7 +18,6 @@ import datetime
 #
 # print(lines)
 
-
 def load_file(rain_file):
     header = []
     rain_data = []

@@ -27,6 +27,7 @@ def roadtrip():
 
     hop2 = 0
 
+
     # hop2 = (city_to_accessible_cities[hop1]) Doesn't work
     # achieve, use the dictionary of the start to access those and print those cities
     # dictionaries.
