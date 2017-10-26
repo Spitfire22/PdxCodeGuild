@@ -3,14 +3,101 @@
 
 A cheesy version of Fifth Element Game as Adventure.
 
-'''
+Note to Allen:
+structure your classes as levels & transitions including transitions which
+can end the game if the user doesn't guess properly. Give each wrong guess
+an added layer of gameplay instead of just ending, but all aspects of that
+wrong level will lead to an end with some options being quicker than others.
 
+Do a rolling intro where the user has to press enter to populate the next aspect
+of the story.
+
+While the game story is important for you to get right, getting a minimum
+viable product is also important, so don't get hung up on just the detail
+of the story but put forth some fillers on each of the story lines.
+
+For later versions :
+imagine at each major scene transition if something else
+had happened. Like if the Chinese food cart guy takes the Fhloston tickets.
+Or if Zorg actually chokes and dies.
+Or if Leeloo stays with the government instead of escapes and you are just
+driving around as a cabbie.
+Make decsions as other characters, which ultimately influence you
+playing as Corbin. Direct the game to the movie.
+
+'''
+from sys import exit
 import random
 from textwrap import dedent
+import time
 
 
 print('-'*60,'\n')
-print('\tFifth Element\t\n')
+print('''``````````````````````````````````T H E  F I F T H  E L E M E N T ``````````````````````````````````
+````````````````````````````````````````````````````````````````````````````````````````````````````
+````````````````````````````````````````````````````````````````````````````````````````````````````
+````````````````````````````````````````````````````````````````````````````````````````````````````
+````````````````````````````````````````````.-:/++++/-``````````````````````````````````````````````
+````````````````````````````````````````-:/++++++++++++:.```````````````````````````````````````````
+``````````````````````````````````````.++++++++++++++++++:.`````````````````````````````````````````
+`````````````````````````````````````-+o+++++++++++++++++++-````````````````````````````````````````
+````````````````````````````````````.+++++++++++++++++++++++/.``````````````````````````````````````
+````````````````````````````````````-++++++++++/++++++++++++++.`````````````````````````````````````
+````````````````````````````````````/++++++:::/.-++++++++++++o+.````````````````````````````````````
+````````````````````````````````````+o++..-`.````...-+++++++++++.```````````````````````````````````
+````````````````````````````````````++o/`````````````-++++++++++/```````````````````````````````````
+```````````````````````````````````.o+o+:`````````````+++++++++++-``````````````````````````````````
+```````````````````````````````````.o++o+`````````````+++++++++++:``````````````````````````````````
+```````````````````````````````````-++++o:```````````.+++++++++++:``````````````````````````````````
+```````````````````````````````````.o+++++-``````````:+++++++++++.``````````````````````````````````
+````````````````````````````````````+++++++:`````````+o+++++++++-```````````````````````````````````
+````````````````````````````````````/+++++++:```````-+++++++/-.-````````````````````````````````````
+````````````````````````````````````-+++++/:::.`````++++/:..````````````````````````````````````````
+`````````````````````````````````````:+++:``````````::-.````````-:/:-.``````````````````````````````
+``````````````````````````````````````:/-`````.``````````````.://-.`````````````````````````````````
+``````````````````````````````````````````.-::.````````````./+/.````````````````````````````````````
+````````````````````````````````````````-/+/.````````````-/++:``````````````````````````````````````
+```````````````````````````````````````:+/-````````````./+/+/```````````````````````````````````````
+``````````````````````````````````````:++.````````````:++//+.```````````````````````````````````````
+`````````````````````````````````````.+/.````````````/+++o+-````````````````````````````````````````
+````````````````````````````````````.+:`````````````//--:+/`````````````````````````````````````````
+```````````````````````````````````-/-`````````````/+-``-+-`````````````````````````````````````````
+``````````````````````````````````:/.`````````````:++++++o``````````````````````````````````````````
+`````````````````````````````````-/``````````````.+++++++o.`````````````````````````````````````````
+`````````````````````````````````+-``````````````:++:-:+oo:`````````````````````````````````````````
+````````````````````````````````.o:``````````````/+:```:oo+`````````````````````````````````````````
+````````````````````````````````.++.`````````````+++-.-+o++:````````````````````````````````````````
+`````````````````````````````````/++.````````````o++++++++++.```````````````````````````````````````
+`````````````````````````````````-++/```````````.o+++++/+++++.``````````````````````````````````````
+``````````````````````````````````++/```````````.o+o+-```/o+++-`````````````````````````````````````
+``````````````````````````````````-++```````````.++++````/+++o+:````````````````````````````````````
+```````````````````````````````````++/-`````````.o+++/::++oo+/-+/```````````````````````````````````
+```````````````````````````````````/++/`````````.o++++++++/::/++/```````````````````````````````````
+```````````````````````````````````-+++`````````-o+++++++.````.//```````````````````````````````````
+````````````````````````````````````++-`````````-++//+++-```````.```````````````````````````````````
+````````````````````````````````````/+/`````````:+.``.+:````````````````````````````````````````````
+````````````````````````````````````:++`````````:+/--/+`````````````````````````````````````````````
+````````````````````````````````````.o+`````````++++++-`````````````````````````````````````````````
+`````````````````````````````````````o+````````.+++++:``````````````````````````````````````````````
+`````````````````````````````````````++````````//:/+/```````````````````````````````````````````````
+`````````````````````````````````````/o.``````.+-`-+.```````````````````````````````````````````````
+`````````````````````````````````````:+:``````/++++:````````````````````````````````````````````````
+`````````````````````````````````````-++`````.+o+++`````````````````````````````````````````````````
+``````````````````````````````````````++-````:++oo/`````````````````````````````````````````````````
+``````````````````````````````````````:++````/+.++-`````````````````````````````````````````````````
+```````````````````````````````````````/+:```++/++``````````````````````````````````````````````````
+```````````````````````````````````````.++-``++++/``````````````````````````````````````````````````
+````````````````````````````````````````-++-`++++/``````````````````````````````````````````````````
+`````````````````````````````````````````-++/o+/++``````````````````````````````````````````````````
+``````````````````````````````````````````-+++++++.`````````````````````````````````````````````````
+```````````````````````````````````````````./+++++:`````````````````````````````````````````````````
+`````````````````````````````````````````````.:/+++.````````````````````````````````````````````````
+````````````````````````````````````````````````..-.````````````````````````````````````````````````
+````````````````````````````````````````````````````````````````````````````````````````````````````
+````````````````````````````````````````````````````````````````````````````````````````````````````
+````````````````````````````````````````````````````````````````````````````````````````````````````
+````````````````````````````````````````````````````````````````````````````````````````````````````
+````````````````````````````````````````````````````````````````````````````````````````````````````''')
 print('-'*60,'\n')
 
 
@@ -40,49 +127,86 @@ following are game boards through all of the scenes.
 
 '''
 
-class scene_transition(object):
+class death(scene):
+
+    quips = ['Man, Zorg is gonna be happy to hear this. Evil prevails again...',
+             'Well, you can always use the Life-Rehabilitator 9000! Just kidding, it doesn\'t exist',
+             'Where is it that you go once you die in this world? Are cemetaries such a thing?',
+             'Everything gets enveloped by an evil black little star, or is it a planet? Good going Corbin...',
+             'You should give this game to a smarter friend, we can only go through this so many times...',
+             'Hear that noise? ... rather the lack of noise? Its the sound of GAME OVER.',
+             'Bad guys prevail, Good guys make dumb decisions. Why is that always the case?'
+             'Oh, you died.                      AGAIN.']
 
     def enter(self):
-        print('This scene is not yet configured, Zorg apologizes for the convience of destroying your world.')
+        print(death.quips[random.randint(0, len(self.quips)-1)])
+        exit(1)
 
-class corbin_apartment(scene_transition):
+
+class corbin_apartment(scene):
+
+    def main():
+        pass
 
     def enter(self):
         print('Apartment scene')
+        print('This scene is not yet configured, Zorg apologizes for the convience of destroying your world.')
+
+        action = input('Answer the door? Damn it, yeah or nah...').lower()
+        if action in ('yeah', 'damn it, yeah', 'damn', 'yes', 'yah', 'answer', 'open'):
+            print('You opened the door and stuff happened')
+
+        if action in ('nah', 'nope', 'no', 'no way'):
+            print('This really complex scene happens where the rest of the world falls against Zorg and the Great Evil')
+            return 'death'
 
 
-class get_away(scene_transition):
+
+class get_away(scene):
 
     def enter(self):
         print('Avoiding the police')
+        print('This scene is not yet configured, Zorg apologizes for the convience of destroying your world.')
 
-class cornelius_apartment(scene_transition):
+class cornelius_apartment(scene):
 
     def enter(self):
         print('Meeting Cornelius')
+        print('This scene is not yet configured, Zorg apologizes for the convience of destroying your world.')
 
-class space_port(scene_transition):
+class space_port(scene):
 
     def enter(self):
         print('Space port - Multipass')
+        print('This scene is not yet configured, Zorg apologizes for the convience of destroying your world.')
 
-class space_ship(scene_transition):
+class space_ship(scene):
 
     def enter(self):
         print('On the ship to Fhloston Paradise')
+        print('This scene is not yet configured, Zorg apologizes for the convience of destroying your world.')
         #scene 1 - boarding ship
         #scene 2 - Leeloo hotel room
         #scene 3 - opera
         #scene 4 - ballroom battle
 
-class egypt(scene_transition):
+class egypt(scene):
 
     def enter(self):
         print('Enter the pyramid - set up the stones in the correct order')
+        print('This scene is not yet configured, Zorg apologizes for the convience of destroying your world.')
         # use time dialation - space time moved slower
 
 
-
+class map(object):
+    scene_transition = {
+        'corbin apartment': corbin_apartment(),
+        'get away': get_away(),
+        'cornelius apartment': cornelius_apartment(),
+        'space port': space_port(),
+        'space ship': space_ship(),
+        'egypt': egypt()
+    }
 
 
 
@@ -192,6 +316,7 @@ def location():
             print()
 # location()
 
+time.sleep(10)
 print(dedent('''
     \tThe year is 2263.\n
     A 'Great Evil' appears in the form of a firey planet.
@@ -203,10 +328,11 @@ print(dedent('''
 
     \t\t\tSoon, the 'Great Evil' will consume earth. 
     '''))
+time.sleep(10)
 print('-' * 60, '\n')
 print('Location: Apartment | ', timeline[1]['time'], year,' | Mood: Apathetic')
 
-
+time.sleep(7)
 print(dedent('''    
     \tGood Morning Corbin Dallas!
     You have one point left on your license.
@@ -216,18 +342,3 @@ You grumble when the door buzzes.
 '''))
 
 
-def main():
-    while True:
-        command = input('Alarm goes off, do you get out of bed or try to fall back asleep?\n\t').lower()
-        if command in ['done', 'quit', 'exit']:
-            break
-        elif command in['fall', 'asleep','back']:
-            retrieve_user()
-        elif command == 'create':
-            create_user()
-        elif command == 'update':
-            update_user()
-        elif command == 'delete':
-            delete_user()
-        else:
-            print('command not recognized')
