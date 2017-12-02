@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="">
+    <style>
+
+        ul li:nth-child(odd) {
+            background-color: aliceblue;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h1>
+    Todo List
+</h1>
+<ul>
+    {% for todo_item in todo_items %}
+    <li>{{ todo_item.todo_text }}</li>
+    {% endfor %}
+</ul>
+<form action="{% url 'todo:savetodo' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="todo_text"/>
+    <button type="submit">Add Todo</button>
+</form>
+
+
+
+
+<script type="text/javascript" src=""></script>
+</body>
+</html>

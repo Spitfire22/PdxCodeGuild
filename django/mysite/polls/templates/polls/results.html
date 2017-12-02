@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>This result</title>
+    <meta name="description" content="">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h1 class="easyreader">
+    {{ question.question_text }}
+</h1>
+
+<ul class="easyreader">
+    {% for choice in question.choice_set.all %}
+    <li>
+        {{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}
+    </li>
+    {% endfor %}
+</ul>
+
+<a  class="easyreader" href="{% url 'polls:detail' question.id %}">
+    Vote again?
+</a>
+<br/>
+
+<a  class="easyreader" href="{% url 'polls:index'%}">
+    Go to Duck screen?
+</a>
+
+</body>
+</html>
