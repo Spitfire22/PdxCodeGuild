@@ -1,65 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <meta name="description" content="">
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'url_shortener/style.css' %}"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    <div class="page-wrapper">
-        <section class="easyreader">
-            <header role="banner">
-                <h1>URL Shortener</h1>
-                <h2>Plug in a URL below</h2>
-            </header>
-        </section>
-        <form action="{% url 'url_shortener:save_url' %}" method="post">
-            {% csrf_token %}
-            <input type="text" name="url_input"/>
-            <button type="submit">Convert!</button>
-        </form>
-        <section class="easyreader">
-            <header role="banner">
-                <div>Copy the text below for your short URL</div>
-            </header>
-        </section>
-        <!-- fix the block quote below to output the shortened URL-->
-        <blockquote id="new_url">Test Text</blockquote>
-    </div>
 
-    <!--the script below is to receive the csrf token -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'url_shortener/style.css' %}"/>
 
-        <!--the script below is the AJAX code which can be reused-->
-    <script>
-        function http_get(url, success) {
-            let xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState === 4 && this.status === 200) {
-                    let data = JSON.parse(xhttp.responseText);
-                    success(data);
-                }
-            };
-            xhttp.open("GET", url);
-            xhttp.send();
-        }
-        function http_post(url, data, success) {
-            let csrf_token = Cookies.get('csrftoken');
-            let xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState === 4 && this.status === 200) {
-                    success(xhttp.responseText);
-                }
-            };
-            xhttp.open("POST", url);
-            xhttp.setRequestHeader("Content-Type", "application/json");
-            xhttp.setRequestHeader('X-CSRFToken', csrf_token);
-            xhttp.send(JSON.stringify(data));
-        }
-    </script>
+<div class="page-wrapper">
+    <section class="easyreader">
+        <header role="banner">
+            <h1>URL Shortener</h1>
+            <h2>Plug in a URL below</h2>
+        </header>
+    </section>
+    <form  class="in_submit" action="{% url 'url_shortener:save_url' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="url_input"/>
+        <button class="btn_in_sub" type="submit">Convert!</button>
+    </form>
+    <section class="easyreader">
+        <header role="banner">
+            <div>Hyperlinks below are all coded in short URL<br/>
+                Yellow = visited<br/>
+                Pink = not visited
+            </div>
+        </header>
+    </section>
+</div>
+<ul>
+    {% for url in urls %}
+    <li class="url_list"><a href="http://127.0.0.1:8000/url_shortener/{{ url.code }}">{{url.long_url}}</a></li>
+    {% endfor %}
+</ul>
 
-</body>
-</html>
+
+<!--the script below is to receive the csrf token -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
+
+    <!--the script below is the AJAX code which can be reused-->
+<script>
+    function http_get(url, success) {
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                let data = JSON.parse(xhttp.responseText);
+                success(data);
+            }
+        };
+        xhttp.open("GET", url);
+        xhttp.send();
+    }
+    function http_post(url, data, success) {
+        let csrf_token = Cookies.get('csrftoken');
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                success(xhttp.responseText);
+            }
+        };
+        xhttp.open("POST", url);
+        xhttp.setRequestHeader("Content-Type", "application/json");
+        xhttp.setRequestHeader('X-CSRFToken', csrf_token);
+        xhttp.send(JSON.stringify(data));
+    }
+</script>

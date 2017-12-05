@@ -2,4 +2,4 @@ from django.contrib import admin
 
 from . import models
 
-admin.site.register(models.urlShortener)
+admin.site.register(models.UrlShortened)

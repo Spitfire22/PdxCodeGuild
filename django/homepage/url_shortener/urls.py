@@ -4,8 +4,10 @@ from . import views
 app_name = 'url_shortener'
 
 urlpatterns = [
-    url(r'^$', views.url_shortener, name='url_shortener'),
-    url(r'^save_url/$', views.save_url, name='save_url')
+    url(r'^$', views.index, name='index'),
+    url(r'^save_url/$', views.save_url, name='save_url'),
+    url(r'^(?P<code>[a-zA-Z0-9]+)/$', views.redirect, name='redirect')
+
 ]
 
 
