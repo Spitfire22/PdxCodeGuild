@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 
 class UrlShortened(models.Model):
@@ -6,3 +7,5 @@ class UrlShortened(models.Model):
 
     def __str__(self):
         return self.code + ' ' + self.long_url
+
+
