@@ -5,14 +5,17 @@
 
 <body>
     <h1> Allen's Library </h1>
+    <div>
+        <div>Name:</div>
+    </div>
     <form action="{% url 'library:savebook' %}" method="post">
         <input type="text" name="user_checkout"/>
         <table>
             <tr>
                 <th>Book Title</th>
                 <th>Author</th>
+                <th>Published</th>
                 <th>Available?</th>
-                <th>Last Check In/Out</th>
                 <th>Borrower's Name</th>
                 <th>In/Out Selection</th>
             </tr>
@@ -21,18 +24,34 @@
             <tr>
                 <td>{{ this_book.book }}</td>
                 <td>{{ this_book.author }}</td>
+                <td>{{ this_book.published }}</td>
                 <td>{{ this_book.available }}</td>
-                <td>{{ this_book.timestamp }}</td>
                 <td>{{ this_book.user }}</td>
 
                 <td><input name="book{{this_book.id}}" type="checkbox" {% if not this_book.available %} checked {% endif %}/><label>Out</label></td>
             </tr>
             {% endfor %}
         </table>
-
         {% csrf_token %}
         <button value="submit" class="big">Check out/in selected</button>
     </form>
+      <table>
+                <tr>
+                    <th>Book</th>
+                    <th>Checked out by</th>
+                    <th>Book with user</th>
+                    <th>On date (Oldest first)</th>
+                </tr>
+
+                {% for this_book in books_checkedout%}
+                <tr>
+                    <td>{{ this_book.book }}</td>
+                    <td>{{ this_book.user }}</td>
+                    <td>{{ this_book.checkout }}</td>
+                    <td>{{ this_book.timestamp }}</td>
+                </tr>
+                {% endfor %}
+            </table>
 
 <script>
     // let checkboxes = document.getElementsByTagName('input');

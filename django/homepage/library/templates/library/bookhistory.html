@@ -1,0 +1,30 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'library/style.css' %}">
+</head>
+
+<body>
+    <h1> Allen's Library </h1>
+    <div>
+         <form action="{% url 'library:bookhistory' %}" method="post">
+            <table>
+                <tr>
+                    <th>Book</th>
+                    <th>Checked out by</th>
+                    <th>Book with user</th>
+                    <th>On date (Oldest first)</th>
+                </tr>
+
+                {% for this_book in library_books%}
+                <tr>
+                    <td>{{ this_book.book }}</td>
+                    <td>{{ this_book.user }}</td>
+                    <td>{{ this_book.checkout }}</td>
+                    <td>{{ this_book.timestamp }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+         </form>
+    </div>
+
+</body>

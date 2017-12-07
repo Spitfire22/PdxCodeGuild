@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from .models import TheLibrary
+from .models import Book, UserCheckout
 
 
 
-admin.site.register(TheLibrary)
-
+admin.site.register(Book)
+admin.site.register(UserCheckout)
