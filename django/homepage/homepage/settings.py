@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'myblog.apps.MyblogConfig',
     'library.apps.LibraryConfig',
     'url_shortener.apps.UrlShortenerConfig',
     'todo.apps.TodoConfig',

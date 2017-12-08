@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^todo/', include('todo.urls')),
     url(r'^url_shortener/', include('url_shortener.urls')),
     url(r'^library/', include('library.urls')),
+    url(r'^myblog/', include('myblog.urls')),
 ]
